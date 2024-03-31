@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>KimCom</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="font_icon/iconfont.css">
+	<link rel="shortcut icon" href="./images/favicon.ico"/>
+	<script src="./js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+	<header>
+		<div class="header box-center">
+			<h1><a href="./index.html" title="KimCom"></a>
+				<span>KimCom</span>
+			</h1>
+			<div class="search-wrap">
+				<form action="">
+					<input type="text" placeholder="Tìm kiếm" id="search-input" onkeydown="search()">
+					<label id="search-btn"><i class="iconfont">&#xe65e;</i></label>
+				</form>
+			</div>
+			<div class="user-wrap">
+				<div class="user-message" style="display: block;">
+					<span class="iconfont">&#xe603;</span>
+					<a href="./bookshelf.html">Kệ sách của tôi</a>
+					<span class="iconfont">&#xe691;</span>
+					<a href="./user.html">Thông tin</a>
+				</div>
+				<div class="user-avatar" style="display: block;">
+					<a href="./user.html">
+						<img src="images/avatar.png" alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<nav class="header-nav box-center">
+			<ul>
+				<li><a href="./index.html">Trang chủ</a></li>
+				<li><a href="./free.html">Đang cập nhật</a></li>
+				<li><a href="./bookAll.html">Thể loại</a></li>
+				<li><a href="./about.html">About</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="container box-center">
+		<div class="user-left">
+			<div class="info-top">
+				<img src="./images/avatar.png" class="avatar">
+				<h4 id="user_name">Người dùng 1</h4>
+				<p id="user_id">ID:100001</p>
+			</div>
+			<div class="info-menu">
+				<ul>
+					<li><a href="./user.html"><i class="iconfont">&#xe62f;</i>Thông tin cá nhân</a></li>
+					<li class="active bookshelf"><a href="./bookshelf.html"><i class="iconfont">&#xe603;</i>Kệ sách của tôi</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="user-right">
+			<h3>Kệ sách của tôi
+				<span>(2)</span>
+				<span class="read-sort active">Thời gian đọc</span>
+				<span class="up-sort">Cập nhật thời gian</span>
+			</h3>
+			<div class="bookshelf-list">
+				<ul>
+					<li class="booklist clearfix">
+						<ul class="vertical-center">
+							<li class="checkbox">
+								<input type="checkbox">
+							</li>
+							<li class="bookimg">
+								<img src="./images/book_2.jpg" alt="">
+							</li>
+							<li class="title">
+								<h4>Tên sách 1</h4>
+								<p>Tác giả sách 1</p>
+							</li>
+							<li class="read-btn">
+								<a href="catalog.html?bookid=1190">Đọc ngay</a>
+							</li>
+						</ul>
+					</li>
+					<li class="booklist clearfix">
+						<ul class="vertical-center">
+							<li class="checkbox">
+								<input type="checkbox">
+							</li>
+							<li class="bookimg">
+								<img src="./images/book_3.jpg" alt="">
+							</li>
+							<li class="title">
+								<h4>Tên sách 2</h4>
+								<p>Tên tác giả sách 2</p>
+							</li>
+							<li class="read-btn">
+								<a href="catalog.html?bookid=1042">Đọc ngay</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<div class="pages">
+				<ul>
+					<li class="pre noborder disable"><a href="javascript:void(0)"><</a></li>
+					<li class="active"><a href="javascript:void(0)">1</a></li>
+					<li class="next">
+						<a href="javascript:void(0)">></a>
+					</li>
+					<li class="noborder" style="margin-right: 20px;">
+						<input type="number" value="1">
+					</li>
+					<li class="noborder">
+						<button type="submit">GO</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<footer class="box-center">
+		<div class="link-map">
+			<a href="#ml" target="_self" rel="nofollow">Giới thiệu trang web</a>
+			<a href="#" target="_self" rel="nofollow">Liên hệ</a>
+		</div>
+		<p>Copyright © 2020 127.0.0.1 All Rights Reserved</p>
+		<p>Tất cả các tác giả được yêu cầu tuân thủ Quy định quản lý thông tin Internet quốc gia khi xuất bản tác phẩm của mình. Chúng tôi từ chối mọi tiểu thuyết khiêu dâm và sẽ xóa chúng ngay khi bị phát hiện!</p>
+		<div class="safe">
+			<a class="site1" href="#" target="_blank"></a>
+			<a class="site2" href="#" target="_blank"></a>
+		</div>
+	</footer>
+	<script type="text/javascript" src="./js/common.js"></script>
+	<script>
+
+		var read_sort = document.getElementsByClassName('read-sort')[0];
+		var up_sort = document.getElementsByClassName('up-sort')[0];
+		read_sort.onclick = function(){
+			this.classList.add("active");
+			up_sort.classList.remove("active");
+		}
+		up_sort.onclick = function(){
+			this.classList.add("active");
+			read_sort.classList.remove("active");
+		}
+	</script>
+</body>
+</html>

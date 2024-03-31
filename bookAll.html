@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>KimCom</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="font_icon/iconfont.css">
+	<link rel="shortcut icon" href="./images/favicon.ico"/>
+	<script src="./js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<!-- Thông tin tiêu đề -->
+	<header>
+		<div class="header box-center">
+			<h1><a href="./index.html" title="KimCom"></a>
+				<span>KimCom</span>
+			</h1>
+			<div class="search-wrap">
+				<form >
+					<input type="text" placeholder="Tìm kiếm" id="search-input" onkeydown="search()">
+					<label id="search-btn"><i class="iconfont">&#xe65e;</i></label>
+				</form>
+			</div>
+			<div class="user-wrap">
+				<div class="user-message">
+					<span class="iconfont">&#xe603;</span>
+					<a href="./bookshelf.html">Tủ sách của tôi</a>
+					<span class="iconfont">&#xe691;</span>
+					<a href="./user.html">Thông tin</a>
+				</div>
+				<p>
+					<a href="javascript:void(0)" id="login" onclick="login(this)">Đăng nhập</a>|
+					<a href="javascript:void(0)" id="register" onclick="login(this)">Đăng ký</a>
+				</p>
+				<div class="user-avatar">
+					<a href="./user.html">
+						<img src="images/avatar.png" alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- 菜单栏 -->
+		<nav class="header-nav box-center">
+			<ul>
+				<li><a href="./index.html">Trang chủ</a></li>
+				<li><a href="./free.html">Đang cập nhật</a></li>
+				<li><a href="./bookAll.html">Thể loại</a></li>
+				<li><a href="./about.html">About</a></li>
+			</ul>
+			<!--<div class="menu-list">
+				<ul>
+				</ul>
+			</div> -->
+		</nav>
+	</header>
+
+	<div class="login">
+		<div class="login-block">
+			<div class="avatar">
+				<img src="./images/avatar.png">
+			</div>
+			<form>
+				<div class="user-info">
+				  <input type="text" name="username" id="username" placeholder="Vui lòng nhập tên người dùng" />
+				  <input type="password" name="password" id="userpwd" placeholder="Mật khẩu" />
+				</div>
+				<div class="login-box">
+					<p>
+						<input type="checkbox" name="remember" value="0" id="remember"> 
+						<label for="remember">Nhớ mật khẩu</label>
+						<a href="javascript:alert('Chức năng này chưa được phát triển')" class="unremeber">Quên mật khẩu</a>
+					</p>
+					<input type="submit" name="login" value="Đăng nhập" id="login_btn">
+
+				</div>
+				<div class="tips">
+					<p> <a href="javascript:alert('Chào mừng bạn tham gia trang web. Vui lòng đọc kỹ Thỏa thuận người dùng này trước khi sử dụng trang web. ')">《Thỏa thuận dịch vụ người dùng》</a>và<a href="javascript:alert('Xin lỗi, bạn đã không có sự riêng tư trong một thời gian dài')">《Chính sách bảo mật》</a></p>
+				</div>
+			</form>
+			<span class="close">x</span>
+		</div>
+	</div>
+
+	
+	<div class="container box-center">
+		<div class="books-classify">
+			<ul>
+				<li>
+					<strong>Phân loại:</strong>
+					<div class="tags">
+					</div>
+				</li>
+				<li>
+					<strong>Số lượng từ:</strong>
+					<div class="tags">
+						<span class="active">Tất cả</span>
+						<span>Dưới 300.000</span>
+						<span>500.000 - 1M</span>
+						<span>1-2M</span>
+						<span>>2M</span>
+					</div>
+				</li>
+				<li>
+					<strong>Tình trạng:</strong>
+					<div class="tags">
+						<span class="active">Tất cả</span>
+						<span>Đang tiến hành</span>
+						<span>Hoàn thành</span>
+					</div>
+				</li>
+				<li>
+					<strong>Thể loại:</strong>
+					<div class="tags">
+						<span class="active">Tất cả</span>
+						<span>Lãng mạn</span>
+						<span>Kinh dị</span>
+						<span>Khác</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<!-- Khối sắp xếp danh sách sách -->
+		<div class="books-block">
+			<div class="books-sort">
+				<span class="active">Tất cả</span>
+				<span>Lượt xem</span>
+				<span>Thời gian</span>
+			</div>
+			<div class="books-list">
+				<ul></ul>
+			</div>
+			<div id="null" style="height:100px;text-align: center;margin-top: 60px;display: none">
+				<p style="font-size: 18px;">Chưa tìm thấy kết quả nào, vui lòng thay đổi từ khóa</p>
+			</div>
+			<!--  Phân trang -->
+			<div class="pages">
+				<ul>
+					<li class="pre noborder disable"><a href="javascript:void(0)"><</a></li>
+					<li class="active"><a href="javascript:void(0)">1</a></li>
+					<li><a href="javascript:void(0)">2</a></li>
+					<li><a href="javascript:void(0)">3</a></li>
+					<li class="noborder">...</li>
+					<li><a href="javascript:void(0)">88</a></li>
+					<li class="next noborder disable">
+						<a href="javascript:void(0)">></a>
+					</li>
+					<li class="noborder" style="margin-right: 20px;">
+						<input type="number" value="1">
+					</li>
+					<li class="noborder">
+						<button type="submit">GO</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+	<footer class="box-center">
+		<div class="link-map">
+			<a href="./about.html" target="_self" rel="nofollow">Giới thiệu trang web</a>
+			<a href="./about.html" target="_self" rel="nofollow">Liên hệ</a>
+		</div>
+		<p>Copyright © 2020 127.0.0.1 All Rights Reserved</p>
+		<p>Tất cả các tác giả được yêu cầu tuân thủ Quy định quản lý thông tin Internet quốc gia khi xuất bản tác phẩm của mình. Chúng tôi từ chối mọi tiểu thuyết khiêu dâm và sẽ xóa chúng ngay khi bị phát hiện!</p>
+		<div class="safe">
+			<a class="site1" href="http://www.12377.cn" target="_blank"></a>
+			<a class="site2" href="http://www.shjbzx.cn" target="_blank"></a>
+		</div>
+	</footer>
+
+	<script type="text/javascript" src="./js/common.js"></script>
+	<script>
+		var search = encodeURI(getUrlParam('search'));
+		// console.log(typeof(search));
+		search = search == 'null' ? '' : search
+		// console.log(search);
+		var pages = search ? 1 : 3; //如果是通过搜索，只获取API第一页内容
+		for(let i=1;i<=pages;i++){
+			var url = encode(`http://admin.iqingtun.com/web/bookroom/index?c_id=0&sales=1&page=${i}${search?'&search='+search : ''}`);
+			// console.log(url);
+			$.get(URLPROXY+url,(data)=>{
+				if (data.code == 400) {
+					$('#null').show()
+					$('.pages').hide()
+				}
+				$.each(data.data ,(i,value)=>{
+					$('.books-list ul').append(`<li>
+						<div class="book-img">
+							<a href="./catalog.html?bookid=${value.id}">
+								<img src="http://${value.front_cover}" alt="">
+							</a>
+						</div>
+						<div class="book-info">
+							<h3>
+								<a href="./catalog.html?bookid=${value.id}">
+								${value.title}
+								</a>
+							</h3>
+							<p class="author">${value.u_name}</p>
+							<div class="tag">
+								<span class="class">${value.c_is_vip == 1?'vip':'Miễn phí'}</span>
+								<span class="state">${value.update_status}</span>
+								<span class="number">Số lượng từ:${value.char_num}</span>
+							</div>
+							<p class="intro">
+								${value.introduction}
+							</p>
+						</div>
+					</li>`)
+				})
+			})
+		}
+		
+	</script>
+	<script>
+		$(".books-classify .tags").on('click','span',function() {
+	        $(this).siblings('span').removeClass('active');
+	        $(this).addClass('active');                    
+    	});
+    	$(".books-block .books-sort span").on('click',function() {
+	        $(this).siblings('span').removeClass('active');
+	        $(this).addClass('active');               
+    	});
+	</script>
+
+</body>
+</html>
